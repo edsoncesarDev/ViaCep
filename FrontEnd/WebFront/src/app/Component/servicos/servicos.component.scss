@@ -1,0 +1,74 @@
+.header{
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding-top:130px;
+}
+
+.headline{
+  margin-left:10%;
+  flex:40%;
+}
+
+.headline h2{
+  font-weight: 900;
+  font-size:20px;
+  color:#180F4A;
+  padding:0;
+  margin:0;
+}
+
+.contact-btn{
+  display: inline-block;
+  background: #180F4A;
+  padding: 10px;
+  color:white;
+  border-radius:5px;
+  text-decoration: none;
+}
+
+.contact-btn:hover{
+  background:#6c6eda;
+}
+
+section{
+  margin-top:30px;
+  margin-left:5%;
+  margin-right:5%;
+  padding:5%;
+  text-align: center;
+}
+
+section h2{
+  width: 100%;
+  font-size: 40px;
+  margin:0;
+  font-family: 'Lobster', cursive;
+  font-weight: bold;
+  color:#180F4A;
+}
+
+.servicos{
+  margin-top:2%;
+  text-align: left;
+}
+
+.input {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 200px;
+}
+
+.editar-btn{
+  background: #180F4A;
+  padding: 5px 8px 5px 8px;
+  color:white;
+  border-radius:5px;
+  text-decoration: none;
+}
+
+.editar-btn:hover{
+  background:#6c6eda;
+}

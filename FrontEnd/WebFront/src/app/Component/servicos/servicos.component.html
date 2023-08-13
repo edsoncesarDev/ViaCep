@@ -1,0 +1,99 @@
+<div>
+  <header class="header">
+    <div class="headline">
+        <h2 style="font-size:30px">Consultar CEP</h2>
+        <input type="text" class="form-control input" mask="00000-000" placeholder="00000-000" [(ngModel)]="cep">
+        <button class="contact-btn" (click)="BuscarEndereco()">Buscar</button>
+    </div>
+  </header>
+  <section *ngIf="endereco && endereco != null">
+    <h2>Pesquisa CEP</h2>
+    <div class="servicos">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" class="d-none d-md-table-cell">Logradouro</th>
+            <th scope="col">Bairro</th>
+            <th scope="col">Localidade</th>
+            <th scope="col">UF</th>
+            <th scope="col" class="d-none d-md-table-cell" *ngIf="endereco.numero">Número</th>
+            <th scope="col" class="d-none d-md-table-cell" *ngIf="endereco.complemento">Complemento</th>
+            <th scope="col">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="d-none d-md-table-cell">{{endereco.logradouro}}</td>
+            <td>{{endereco.bairro}}</td>
+            <td>{{endereco.localidade}}</td>
+            <td>{{endereco.uf}}</td>
+            <td class="d-none d-md-table-cell" *ngIf="endereco.numero">
+              {{endereco.numero}}
+            </td>
+            <td class="d-none d-md-table-cell" *ngIf="endereco.complemento">
+              {{endereco.complemento}}
+            </td>
+            <td>
+              <a class="editar-btn"
+                tooltip="Editar"
+                (click)="openModal($event, template)">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="form">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="logradouro">Logradouro</label>
+        <input type="text" class="form-control" id="logradouro" placeholder="Digite o logradouro" formControlName="logradouro">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="bairro">Bairro</label>
+          <input type="text" class="form-control" id="bairro" placeholder="Digite o bairro" formControlName="bairro">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="localidade">Localidade</label>
+          <input type="text" class="form-control" id="localidade" placeholder="Digite a localidade" formControlName="localidade">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="uf">UF</label>
+          <input type="text" class="form-control" id="uf" placeholder="Digite o UF" formControlName="uf">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="numero">Número</label>
+          <input type="number" class="form-control" id="numero" placeholder="Digite o número" formControlName="numero">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="complemento">Complemento</label>
+          <input type="text" class="form-control" id="complemento" placeholder="Digite o complemento" formControlName="complemento">
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="confirm()">Confirmar</button>
+    <button type="button" class="btn btn-danger" (click)="decline()">Cancelar</button>
+  </div>
+</ng-template>
